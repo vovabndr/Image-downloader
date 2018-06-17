@@ -6,21 +6,27 @@
 //  Copyright © 2018 vbbv. All rights reserved.
 //
 
-import Foundation
 import CoreData
-//
 import UIKit
-//
+
 class CoreDataHelper {
-    
     private class func getContex() -> NSManagedObjectContext {
-        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return  NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)}
+        return appDelegate.persistentContainer.viewContext
     }
     
-    class func save(imageLink: String?, imageData: Data? ){
+    class func save(imageLink: String?, imageData: Data?, message: @escaping (String) -> Void) {
+        guard let imageLink = imageLink,
+            let imageData = imageData else {
+                message("Bad data")
+                return
+        }
         
-        guard let imageLink = imageLink, let imageData = imageData else { return  }
-        
+        if !check(imageLink: imageLink) {
+            message("Already saved")
+            return
+        }
         let context = getContex()
         let entity = NSEntityDescription.entity(forEntityName: "ImageManagedObject", in: context)
         let newImage = NSManagedObject(entity: entity!, insertInto: context)
@@ -30,13 +36,13 @@ class CoreDataHelper {
         
         do {
             try context.save()
-            print("save")
+            message("Saved!")
         } catch let error {
             print(error.localizedDescription)
         }
     }
     
-    class func fetch(handle: @escaping ([NSManagedObject],[Image]) -> Void){
+    class func fetch(handle: @escaping ([NSManagedObject], [Image]) -> Void) {
         let context = getContex()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ImageManagedObject")
         request.returnsObjectsAsFaults = false
@@ -45,8 +51,9 @@ class CoreDataHelper {
             if let results = try context.fetch(request) as? [NSManagedObject] {
                 var imageList = [Image]()
                 for result in results {
-                    imageList.append(Image(link: result.value(forKey: "link") as! String,
-                                           image: result.value(forKey: "image") as! Data))
+                    guard let link = result.value(forKey: "link") as? String,
+                        let image = result.value(forKey: "image") as? Data else { return }
+                    imageList.append(Image(link: link, image: image))
                 }
                 handle(results, imageList)
             }
@@ -55,9 +62,7 @@ class CoreDataHelper {
         }
     }
     
-    class func delete(by index: Int){
-        
-        
+    class func delete(by index: Int) {
         let context = getContex()
         fetch { managed, _ in context.delete(managed[index]) }
         do {
@@ -65,6 +70,16 @@ class CoreDataHelper {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    class func check (imageLink: String?) -> Bool {
+      var answer = Bool()
+        fetch {
+            if !$1.contains(where: {$0.link == imageLink}) {
+                answer = true
+            }
+        }
+        return answer
     }
     
 }

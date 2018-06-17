@@ -12,7 +12,6 @@
 		3165A82E20D5286100748904 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3165A82D20D5286100748904 /* CoreDataHelper.swift */; };
 		3165A83220D528A300748904 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3165A83120D528A300748904 /* ImageView.swift */; };
 		3165A83420D57A4900748904 /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3165A83320D57A4900748904 /* image.swift */; };
-		3165A83620D580AF00748904 /* IMG.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 3165A83520D580AE00748904 /* IMG.PNG */; };
 		31C66FE020D3DA3800571B1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C66FDF20D3DA3800571B1B /* AppDelegate.swift */; };
 		31C66FE520D3DA3800571B1B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C66FE320D3DA3800571B1B /* Main.storyboard */; };
 		31C66FE820D3DA3800571B1B /* Downloader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31C66FE620D3DA3800571B1B /* Downloader.xcdatamodeld */; };
@@ -26,7 +25,6 @@
 		3165A82D20D5286100748904 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		3165A83120D528A300748904 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		3165A83320D57A4900748904 /* image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
-		3165A83520D580AE00748904 /* IMG.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG.PNG; sourceTree = "<group>"; };
 		31C66FDC20D3DA3800571B1B /* Downloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Downloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C66FDF20D3DA3800571B1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31C66FE420D3DA3800571B1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				31C66FDF20D3DA3800571B1B /* AppDelegate.swift */,
-				3165A83520D580AE00748904 /* IMG.PNG */,
 				3165A82F20D5286F00748904 /* Model */,
 				31C66FF820D4380B00571B1B /* View */,
 				31C66FF720D437FE00571B1B /* Controller */,
@@ -124,6 +121,7 @@
 				31C66FD820D3DA3800571B1B /* Sources */,
 				31C66FD920D3DA3800571B1B /* Frameworks */,
 				31C66FDA20D3DA3800571B1B /* Resources */,
+				3165A83820D5A84500748904 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -173,13 +171,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				31C66FED20D3DA3B00571B1B /* LaunchScreen.storyboard in Resources */,
-				3165A83620D580AF00748904 /* IMG.PNG in Resources */,
 				31C66FEA20D3DA3B00571B1B /* Assets.xcassets in Resources */,
 				31C66FE520D3DA3800571B1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3165A83820D5A84500748904 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"error: SwiftLint does not exist\"\nexit 1\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		31C66FD820D3DA3800571B1B /* Sources */ = {

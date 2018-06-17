@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,12 +23,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="68W-0C-Ee1">
-                                <rect key="frame" x="16" y="182" width="343" height="302"/>
+                                <rect key="frame" x="31" y="141" width="313" height="432"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KkJ-3R-D0X">
-                                <rect key="frame" x="126" y="531" width="123" height="53"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Save"/>
+                                <rect key="frame" x="73.5" y="602" width="227" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Y4f-um-5qG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                <state key="normal" title="Save to storage">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="saveImage:" destination="s2p-PV-dsY" eventType="touchUpInside" id="YvY-7t-5ID"/>
                                 </connections>
@@ -37,22 +42,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KkJ-3R-D0X" firstAttribute="leading" secondItem="iiK-Fe-1SE" secondAttribute="leading" constant="126" id="7WA-nx-Es1"/>
-                            <constraint firstItem="iiK-Fe-1SE" firstAttribute="bottom" secondItem="KkJ-3R-D0X" secondAttribute="bottom" constant="83" id="AGT-C8-geY"/>
-                            <constraint firstItem="68W-0C-Ee1" firstAttribute="centerX" secondItem="Ysu-b8-scq" secondAttribute="centerX" id="C8B-15-amD"/>
-                            <constraint firstItem="iiK-Fe-1SE" firstAttribute="trailing" secondItem="Ysu-b8-scq" secondAttribute="trailing" id="Dge-E6-z27"/>
-                            <constraint firstItem="68W-0C-Ee1" firstAttribute="leading" secondItem="mux-vZ-Z5y" secondAttribute="leadingMargin" id="ThN-oF-xQx"/>
-                            <constraint firstItem="Ysu-b8-scq" firstAttribute="top" secondItem="iiK-Fe-1SE" secondAttribute="top" id="VG7-zi-d2L"/>
-                            <constraint firstItem="68W-0C-Ee1" firstAttribute="top" secondItem="Ysu-b8-scq" secondAttribute="bottom" constant="62" id="XGl-Mv-1pH"/>
-                            <constraint firstItem="KkJ-3R-D0X" firstAttribute="top" secondItem="68W-0C-Ee1" secondAttribute="bottom" constant="47" id="ZIv-UK-WVV"/>
-                            <constraint firstItem="Ysu-b8-scq" firstAttribute="leading" secondItem="mux-vZ-Z5y" secondAttribute="leading" id="gfx-Io-x19"/>
-                            <constraint firstItem="KkJ-3R-D0X" firstAttribute="centerX" secondItem="68W-0C-Ee1" secondAttribute="centerX" id="ggw-TR-bVP"/>
-                            <constraint firstItem="68W-0C-Ee1" firstAttribute="centerY" secondItem="mux-vZ-Z5y" secondAttribute="centerY" id="jqo-re-pAv"/>
-                            <constraint firstItem="Ysu-b8-scq" firstAttribute="leading" secondItem="iiK-Fe-1SE" secondAttribute="leading" id="q1u-sw-MSP"/>
+                            <constraint firstItem="iiK-Fe-1SE" firstAttribute="trailing" secondItem="Ysu-b8-scq" secondAttribute="trailing" id="1Wu-5u-AEm"/>
+                            <constraint firstItem="iiK-Fe-1SE" firstAttribute="top" secondItem="Ysu-b8-scq" secondAttribute="bottom" constant="-56" id="46Y-8K-cLd"/>
+                            <constraint firstAttribute="bottom" secondItem="KkJ-3R-D0X" secondAttribute="bottom" constant="20" symbolic="YES" id="E0u-S1-Uyc"/>
+                            <constraint firstItem="68W-0C-Ee1" firstAttribute="top" secondItem="Ysu-b8-scq" secondAttribute="bottom" constant="21" id="Ehx-no-UUK"/>
+                            <constraint firstItem="68W-0C-Ee1" firstAttribute="leading" secondItem="iiK-Fe-1SE" secondAttribute="leading" constant="31" id="FEr-zx-f5X"/>
+                            <constraint firstItem="Ysu-b8-scq" firstAttribute="leading" secondItem="iiK-Fe-1SE" secondAttribute="leading" id="XuD-Ld-9go"/>
+                            <constraint firstItem="KkJ-3R-D0X" firstAttribute="centerX" secondItem="68W-0C-Ee1" secondAttribute="centerX" id="ZRL-wQ-fy5"/>
+                            <constraint firstItem="iiK-Fe-1SE" firstAttribute="trailing" secondItem="68W-0C-Ee1" secondAttribute="trailing" constant="31" id="fla-sF-qEn"/>
+                            <constraint firstItem="KkJ-3R-D0X" firstAttribute="top" secondItem="68W-0C-Ee1" secondAttribute="bottom" constant="29" id="gie-G4-Ni9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iiK-Fe-1SE"/>
                     </view>
                     <navigationItem key="navigationItem" title="Image Downloader" id="pVk-4w-hnU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="pVl-e2-64L">
+                            <connections>
+                                <action selector="shareBarButton:" destination="s2p-PV-dsY" id="3wM-rg-d00"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="r0T-TZ-QvN">
                             <connections>
                                 <segue destination="YYf-PI-iJb" kind="show" identifier="historySegue" id="5cu-b7-gx4"/>
@@ -66,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZM-eS-hYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="-712"/>
+            <point key="canvasLocation" x="115.59220389805098" y="-716"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="krn-Rq-0QV">
@@ -76,15 +83,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="paT-JZ-D87">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="paT-JZ-D87">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" id="D3Z-sK-gmX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3Z-sK-gmX" id="H9R-i0-hAJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
