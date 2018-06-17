@@ -12,6 +12,12 @@ class ImageSearchViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var downloadedImageView: UIImageView!
     @IBOutlet weak var urlSearchBar: UISearchBar!
+    @IBOutlet weak var saveButton: UIButton! {
+        didSet {
+            saveButton.layer.cornerRadius = 10.0
+            saveButton.clipsToBounds = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +25,10 @@ class ImageSearchViewController: UIViewController, UIGestureRecognizerDelegate {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
         tapRecognizer.delegate = self
         view.addGestureRecognizer(tapRecognizer)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.items![0].title = "Image Downloader"
     }
 
     @objc func tap(_ recognizer: UITapGestureRecognizer) {
@@ -87,5 +97,11 @@ extension ImageSearchViewController: UISearchBarDelegate {
             }
         }
         searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text?.isEmpty)! {
+            downloadedImageView.image = nil
+        }
     }
 }

@@ -68,6 +68,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="downloadedImageView" destination="68W-0C-Ee1" id="oiR-1r-9hu"/>
+                        <outlet property="saveButton" destination="KkJ-3R-D0X" id="4CQ-sh-TNh"/>
                         <outlet property="urlSearchBar" destination="Ysu-b8-scq" id="4js-uB-udz"/>
                     </connections>
                 </viewController>
